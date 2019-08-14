@@ -1,0 +1,86 @@
+id: http://clinicalprofiles.org/biolink/extension
+name: ClinicalProfile Biolink Model extensions
+description: Biolink model extensions for the ClinicalProfile knowledge graphs
+license: https://creativecommons.org/publicdomain/zero/1.0/
+
+prefixes:
+  biolink: https://w3id.org/biolink/vocab/
+  biolinkml: https://w3id.org/biolink/biolinkml/
+
+default_prefix: biolink
+default_range: string
+
+imports:
+  - https://w3id.org/biolink/biolink-model
+
+slots:
+  has active ingredient:
+    domain: medicine
+    range: drug
+    multivalued: true
+
+  correlation:
+    is_a: related to
+    description: A correlation between any two entities
+    domain: named thing
+    range: named thing
+
+  lab has correlated lab:
+    is_a: correlation
+    description: A correlation between two lab tests
+    domain: laboratory result
+    range: laboratory result
+
+  correlation coefficient:
+    is_a: association slot
+    range: float
+
+  population:
+    is_a: association slot
+    range: uri
+
+  cohort:
+    is_a: association slot
+    range: uri
+
+
+classes:
+  laboratory result:
+    description:  The result of a clinical laboratory test performed on a patient
+    is_a: phenomenon
+
+  laboratory test:
+    description: The definition and description of a clinical laboratory test
+    is_a: procedure
+
+  medication:
+    description: Medication that has been prescribed and (ostensibly) taken
+    is_a: clinical intervention
+
+  medicine:
+    description: Description of the contents of a medication
+    is_a: chemical substance
+    slots:
+      - has active ingredient
+
+# procedure is already defined, although one might context its definition
+
+  diagnosis:
+    description: An assertion of a disease or disorder
+    is_a:
+
+  lab to lab correlation:
+    is_a: association
+    slots:
+      - correlation coefficient
+      - population
+      - cohort
+    description: >-
+      A correlation between two laboratory tests in the context of a particular population and cohort
+    slot_usage:
+      relation:
+        subproperty_of: lab has correlated lab
+      subject:
+        range: laboratory test
+      object:
+        range: laboratory test

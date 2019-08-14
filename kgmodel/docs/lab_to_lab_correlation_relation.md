@@ -1,0 +1,22 @@
+
+# Slot: relation
+
+
+
+
+URI: [biolink:lab_to_lab_correlation_relation](https://w3id.org/biolink/vocab/lab_to_lab_correlation_relation)
+
+## Domain and Range
+
+[LabToLabCorrelation](LabToLabCorrelation.md) ->  <sub>REQ</sub> [IriType](IriType.md)
+
+## Parents
+
+ *  is_a: [relation](relation.md)
+
+## Children
+
+
+## Used by
+
+ * [LabToLabCorrelation](LabToLabCorrelation.md)

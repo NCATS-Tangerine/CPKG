@@ -102,3 +102,8 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# Project specific artifacts
+env.lock
+*-PREV
+Clinical Profiles Examples
