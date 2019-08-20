@@ -8,7 +8,7 @@ URI: [biolink:subject](https://w3id.org/biolink/vocab/subject)
 
 ## Domain and Range
 
-[Association](Association.md) ->  <sub>REQ</sub> [IriType](IriType.md)
+[Association](Association.md) ->  <sub>REQ</sub> [NamedThing](NamedThing.md)
 
 ## Parents
 
@@ -39,6 +39,7 @@ URI: [biolink:subject](https://w3id.org/biolink/vocab/subject)
  *  [subject](genotype_to_thing_association_subject.md)
  *  [subject](genotype_to_variant_association_subject.md)
  *  [subject](lab_to_lab_correlation_subject.md)
+ *  [subject](lab_to_medication_correlation_subject.md)
  *  [subject](model_to_disease_mixin_subject.md)
  *  [subject](pairwise_interaction_association_subject.md)
  *  [subject](population_to_population_association_subject.md)
@@ -68,6 +69,7 @@ URI: [biolink:subject](https://w3id.org/biolink/vocab/subject)
  * [DiseaseOrPhenotypicFeatureAssociationToThingAssociation](DiseaseOrPhenotypicFeatureAssociationToThingAssociation.md)
  * [DiseaseToPhenotypicFeatureAssociation](DiseaseToPhenotypicFeatureAssociation.md)
  * [DiseaseToThingAssociation](DiseaseToThingAssociation.md)
+ * [EntityToEntityCorrelation](EntityToEntityCorrelation.md)
  * [EntityToPhenotypicFeatureAssociation](EntityToPhenotypicFeatureAssociation.md)
  * [EnvironmentToPhenotypicFeatureAssociation](EnvironmentToPhenotypicFeatureAssociation.md)
  * [ExonToTranscriptRelationship](ExonToTranscriptRelationship.md)
@@ -89,6 +91,7 @@ URI: [biolink:subject](https://w3id.org/biolink/vocab/subject)
  * [GenotypeToThingAssociation](GenotypeToThingAssociation.md)
  * [GenotypeToVariantAssociation](GenotypeToVariantAssociation.md)
  * [LabToLabCorrelation](LabToLabCorrelation.md)
+ * [LabToMedicationCorrelation](LabToMedicationCorrelation.md)
  * [ModelToDiseaseMixin](ModelToDiseaseMixin.md)
  * [PairwiseInteractionAssociation](PairwiseInteractionAssociation.md)
  * [PopulationToPopulationAssociation](PopulationToPopulationAssociation.md)

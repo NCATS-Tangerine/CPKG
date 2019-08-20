@@ -16,7 +16,6 @@ URI: [biolink:correlation](https://w3id.org/biolink/vocab/correlation)
 
 ## Children
 
- *  [lab has correlated lab](lab_has_correlated_lab.md)
 
 ## Used by
 

@@ -7,6 +7,9 @@ prefixes:
   biolink: https://w3id.org/biolink/vocab/
   biolinkml: https://w3id.org/biolink/biolinkml/
 
+emit_prefixes:
+  - NCIT
+
 default_prefix: biolink
 default_range: string
 
@@ -24,12 +27,6 @@ slots:
     description: A correlation between any two entities
     domain: named thing
     range: named thing
-
-  lab has correlated lab:
-    is_a: correlation
-    description: A correlation between two lab tests
-    domain: laboratory result
-    range: laboratory result
 
   correlation coefficient:
     is_a: association slot
@@ -69,18 +66,30 @@ classes:
     description: An assertion of a disease or disorder
     is_a:
 
-  lab to lab correlation:
+  entity to entity correlation:
     is_a: association
     slots:
       - correlation coefficient
       - population
       - cohort
+    slot_usage:
+      relation:
+        ifabsent: uri(NCIT:C48834)
+
+  lab to lab correlation:
+    is_a: entity to entity correlation
     description: >-
       A correlation between two laboratory tests in the context of a particular population and cohort
     slot_usage:
-      relation:
-        subproperty_of: lab has correlated lab
       subject:
         range: laboratory test
       object:
         range: laboratory test
+
+  lab to medication correlation:
+    is_a: entity to entity correlation
+    slot_usage:
+      subject:
+        range: laboratory test
+      object:
+        range: drug

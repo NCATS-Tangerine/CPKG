@@ -8,7 +8,7 @@ URI: [biolink:cohort](https://w3id.org/biolink/vocab/cohort)
 
 ## Domain and Range
 
-[LabToLabCorrelation](LabToLabCorrelation.md) ->  <sub>OPT</sub> [Uri](Uri.md)
+[EntityToEntityCorrelation](EntityToEntityCorrelation.md) ->  <sub>OPT</sub> [Uri](Uri.md)
 
 ## Parents
 
@@ -19,4 +19,6 @@ URI: [biolink:cohort](https://w3id.org/biolink/vocab/cohort)
 
 ## Used by
 
+ * [EntityToEntityCorrelation](EntityToEntityCorrelation.md)
  * [LabToLabCorrelation](LabToLabCorrelation.md)
+ * [LabToMedicationCorrelation](LabToMedicationCorrelation.md)

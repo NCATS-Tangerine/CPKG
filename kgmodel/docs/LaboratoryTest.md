@@ -6,7 +6,7 @@ The definition and description of a clinical laboratory test
 
 URI: [biolink:LaboratoryTest](https://w3id.org/biolink/vocab/LaboratoryTest)
 
-![img](http://yuml.me/diagram/nofunky;dir:TB/class/\[LabToLabCorrelation]-%20object%201..1>\[LaboratoryTest|id(i):identifier_type;name(i):label_type;category(i):iri_type%20%2B],%20\[LabToLabCorrelation]-%20subject%201..1>\[LaboratoryTest],%20\[Procedure]^-\[LaboratoryTest])
+![img](http://yuml.me/diagram/nofunky;dir:TB/class/\[LabToLabCorrelation]-%20object%201..1>\[LaboratoryTest|id(i):identifier_type;name(i):label_type;category(i):iri_type%20%2B],%20\[LabToLabCorrelation]-%20subject%201..1>\[LaboratoryTest],%20\[LabToMedicationCorrelation]-%20subject%201..1>\[LaboratoryTest],%20\[Procedure]^-\[LaboratoryTest])
 
 ## Parents
 
@@ -16,6 +16,7 @@ URI: [biolink:LaboratoryTest](https://w3id.org/biolink/vocab/LaboratoryTest)
 
  *  **[LabToLabCorrelation](LabToLabCorrelation.md)** *[object](lab_to_lab_correlation_object.md)*  <sub>REQ</sub>  **[LaboratoryTest](LaboratoryTest.md)**
  *  **[LabToLabCorrelation](LabToLabCorrelation.md)** *[subject](lab_to_lab_correlation_subject.md)*  <sub>REQ</sub>  **[LaboratoryTest](LaboratoryTest.md)**
+ *  **[LabToMedicationCorrelation](LabToMedicationCorrelation.md)** *[subject](lab_to_medication_correlation_subject.md)*  <sub>REQ</sub>  **[LaboratoryTest](LaboratoryTest.md)**
 
 ## Attributes
 

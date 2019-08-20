@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "b0dd2490837d4ca5b4cb0e223d0bf538f75c7f7990cf4a8954101e29ab8274e3"
+            "sha256": "a3e335beb120cb1b86c9963ef0e54daa4e59041a8e1455050b101fc5c7d1c287"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -45,18 +45,19 @@
         },
         "biolink-model": {
             "hashes": [
-                "sha256:a49926d94251015ef2e5444bf3a3c4dc5d32f174b1dd25078181266931e53c88"
+                "sha256:7640bfa38d209adbeb906540cffcfb4b92b42931b6b5c0c1bfe748ea75a10e90",
+                "sha256:882f1d08c2a5605c40c0ae3368dcc1acbf5349c9f9aff243c999f6fa575a1e52"
             ],
             "index": "pypi",
-            "version": "==1.2.1"
+            "version": "==1.2.3"
         },
         "biolinkml": {
             "hashes": [
-                "sha256:5f6926ecb968c8f5a276915c8e947cc6342bffd00778095de4c82e4222626359",
-                "sha256:fd03812ad636968a4b43b456c9543c77b2d76ac938112a1f2f732e8246e801fc"
+                "sha256:67de3183c18cb51fc74bee2f3e01e0d1cdb200c07faeead31e10b1bfe6e1e22f",
+                "sha256:ec671dbb7590698343ff62b98d635edf14b7fc5938a4ef6cf23af8ca501ef589"
             ],
             "index": "pypi",
-            "version": "==1.4.3"
+            "version": "==1.4.5"
         },
         "cachier": {
             "hashes": [

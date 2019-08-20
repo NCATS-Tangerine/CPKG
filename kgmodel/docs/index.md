@@ -25,6 +25,9 @@ Biolink model extensions for the ClinicalProfile knowledge graphs
        * [DiseaseOrPhenotypicFeatureAssociationToLocationAssociation](DiseaseOrPhenotypicFeatureAssociationToLocationAssociation.md) - An association between either a disease or a phenotypic feature and an anatomical entity, where the disease/feature manifests in that site.
     * [DiseaseToPhenotypicFeatureAssociation](DiseaseToPhenotypicFeatureAssociation.md) - An association between a disease and a phenotypic feature in which the phenotypic feature is associated with the disease in some way
     * [DiseaseToThingAssociation](DiseaseToThingAssociation.md)
+    * [EntityToEntityCorrelation](EntityToEntityCorrelation.md)
+       * [LabToLabCorrelation](LabToLabCorrelation.md) - A correlation between two laboratory tests in the context of a particular population and cohort
+       * [LabToMedicationCorrelation](LabToMedicationCorrelation.md)
     * [EntityToPhenotypicFeatureAssociation](EntityToPhenotypicFeatureAssociation.md)
     * [EnvironmentToPhenotypicFeatureAssociation](EnvironmentToPhenotypicFeatureAssociation.md) - Any association between an environment and a phenotypic feature, where being in the environment influences the phenotype
     * [FunctionalAssociation](FunctionalAssociation.md) - An association between a macromolecular machine (gene, gene product or complex of gene products) and either a molecular activity, a biological process or a cellular location in which a function is executed
@@ -48,7 +51,6 @@ Biolink model extensions for the ClinicalProfile knowledge graphs
     * [GenotypeToPhenotypicFeatureAssociation](GenotypeToPhenotypicFeatureAssociation.md) - Any association between one genotype and a phenotypic feature, where having the genotype confers the phenotype, either in isolation or through environment
     * [GenotypeToThingAssociation](GenotypeToThingAssociation.md)
     * [GenotypeToVariantAssociation](GenotypeToVariantAssociation.md) - Any association between a genotype and a sequence variant.
-    * [LabToLabCorrelation](LabToLabCorrelation.md) - A correlation between two laboratory tests in the context of a particular population and cohort
     * [PairwiseInteractionAssociation](PairwiseInteractionAssociation.md) - An interaction at the molecular level between two physical entities
     * [PopulationToPopulationAssociation](PopulationToPopulationAssociation.md) - An association between a two populations
     * [SequenceFeatureRelationship](SequenceFeatureRelationship.md) - For example, a particular exon is part of a particular transcript or gene
@@ -180,7 +182,7 @@ Biolink model extensions for the ClinicalProfile knowledge graphs
     * [clinical modifier qualifier](clinical_modifier_qualifier.md) - Used to characterize and specify the phenotypic abnormalities defined in the Phenotypic abnormality subontology, with respect to severity, laterality, age of onset, and other aspects
     * [cohort](cohort.md)
     * [correlation coefficient](correlation_coefficient.md)
-    * [edge label](edge_label.md) - A high-level grouping for the relationship type. AKA minimal predicate. This is analogous to category for nodes. 
+    * [edge label](edge_label.md) - A high-level grouping for the relationship type. AKA minimal predicate. This is analogous to category for nodes.
     * [frequency qualifier](frequency_qualifier.md) - a qualifier used in a phenotypic association to state how frequent the phenotype is observed in the subject
     * [has confidence level](has_confidence_level.md) - connects an association to a qualitative term denoting the level of confidence
     * [has evidence](has_evidence.md) - connects an association to an instance of supporting evidence
@@ -208,6 +210,7 @@ Biolink model extensions for the ClinicalProfile knowledge graphs
        * [object](genotype_to_genotype_part_association_object.md)
        * [object](genotype_to_variant_association_object.md)
        * [object](lab_to_lab_correlation_object.md)
+       * [object](lab_to_medication_correlation_object.md)
        * [object](pairwise_interaction_association_object.md)
        * [object](population_to_population_association_object.md)
        * [object](sequence_feature_relationship_object.md)
@@ -228,6 +231,7 @@ Biolink model extensions for the ClinicalProfile knowledge graphs
     * [relation](relation.md) - the relationship type by which a subject is connected to an object in an association
        * [relation](anatomical_entity_to_anatomical_entity_ontogenic_association_relation.md)
        * [relation](anatomical_entity_to_anatomical_entity_part_of_association_relation.md)
+       * [relation](entity_to_entity_correlation_relation.md)
        * [relation](gene_regulatory_relationship_relation.md)
        * [relation](gene_to_expression_site_association_relation.md)
        * [relation](gene_to_gene_homology_association_relation.md)
@@ -236,7 +240,6 @@ Biolink model extensions for the ClinicalProfile knowledge graphs
        * [relation](genotype_to_genotype_part_association_relation.md)
        * [relation](genotype_to_phenotypic_feature_association_relation.md)
        * [relation](genotype_to_variant_association_relation.md)
-       * [relation](lab_to_lab_correlation_relation.md)
        * [relation](model_to_disease_mixin_relation.md)
        * [relation](pairwise_gene_to_gene_interaction_relation.md)
        * [relation](pairwise_interaction_association_relation.md)
@@ -276,6 +279,7 @@ Biolink model extensions for the ClinicalProfile knowledge graphs
        * [subject](genotype_to_thing_association_subject.md)
        * [subject](genotype_to_variant_association_subject.md)
        * [subject](lab_to_lab_correlation_subject.md)
+       * [subject](lab_to_medication_correlation_subject.md)
        * [subject](model_to_disease_mixin_subject.md)
        * [subject](pairwise_interaction_association_subject.md)
        * [subject](population_to_population_association_subject.md)
@@ -406,7 +410,6 @@ Biolink model extensions for the ClinicalProfile knowledge graphs
        * [biomarker for](biomarker_for.md) - holds between a measurable molecular entity and a disease or phenotypic feature, where the entity is used as an indicator of the presence or state of the disease or feature.
        * [has biomarker](has_biomarker.md)
     * [correlation](correlation.md) - A correlation between any two entities
-       * [lab has correlated lab](lab_has_correlated_lab.md) - A correlation between two lab tests
     * [derives from](derives_from.md) - holds between two distinct material entities, the new entity and the old entity, in which the new entity begins to exist when the old entity ceases to exist, and the new entity inherits the significant portion of the matter of the old entity
     * [derives into](derives_into.md) - holds between two distinct material entities, the old entity and the new entity, in which the new entity begins to exist when the old entity ceases to exist, and the new entity inherits the significant portion of the matter of the old entity
     * [expressed in](expressed_in.md) - holds between a gene or gene product and an anatomical entity in which it is expressed
@@ -471,9 +474,9 @@ Biolink model extensions for the ClinicalProfile knowledge graphs
  * [Double](Double.md)  (**float**)  - A real number that conforms to the xsd:double specification
  * [Float](Float.md)  (**float**)  - A real number that conforms to the xsd:float specification
  * [Frequency](Frequency.md)  ([String](String.md)) 
- * [IdentifierType](IdentifierType.md)  ([String](String.md))  - A string that is intended to uniquely identify a thing May be URI in full or compact (CURIE) form
+ * [IdentifierType](IdentifierType.md)  (**ElementIdentifier**)  - A string that is intended to uniquely identify a thing May be URI in full or compact (CURIE) form
  * [Integer](Integer.md)  (**int**)  - An integer
- * [IriType](IriType.md)  ([Uri](Uri.md))  - An IRI
+ * [IriType](IriType.md)  ([Uriorcurie](Uriorcurie.md))  - An IRI
  * [LabelType](LabelType.md)  ([String](String.md))  - A string that provides a human-readable name for a thing
  * [NarrativeText](NarrativeText.md)  ([String](String.md))  - A string that provides a human-readable description of something
  * [Ncname](Ncname.md)  (**NCName**)  - Prefix part of CURIE

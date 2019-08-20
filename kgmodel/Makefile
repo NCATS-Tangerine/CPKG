@@ -6,7 +6,7 @@ all: install build
 
 install: env.lock
 
-build: clinicalprofiles.py docs/index.md clinicalprofiles.shex
+build: clinicalprofiles.py docs/index.md clinicalprofiles.shex context.jsonld
 
 
 # ---------------------------------------
@@ -38,6 +38,11 @@ docs/index.md: clinicalprofiles.yaml env.lock
 clinicalprofiles.shex: clinicalprofiles.yaml env.lock
 	pipenv run gen-shex $< > $@
 
+# ~~~~~~~~~~~~~~~~~~~~
+# JSON-LD CONTEXT
+# ~~~~~~~~~~~~~~~~~~~~
+context.jsonld: clinicalprofiles.yaml env.lock
+	pipenv run gen-jsonld-context $< > tmp.jsonld && ( pipenv run comparefiles tmp.jsonld $@ -c "^\s*\"comments\".*\n" && cp tmp.jsonld $@); rm tmp.jsonld
 
 # ----------------------------------------
 # CLEAN

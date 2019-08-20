@@ -12,10 +12,6 @@ URI: [biolink:LaboratoryResult](https://w3id.org/biolink/vocab/LaboratoryResult)
 
  *  is_a: [Phenomenon](Phenomenon.md) - a fact or situation that is observed to exist or happen, especially one whose cause or explanation is in question
 
-## Referenced by class
-
- *  **[LaboratoryResult](LaboratoryResult.md)** *[lab has correlated lab](lab_has_correlated_lab.md)*  <sub>0..*</sub>  **[LaboratoryResult](LaboratoryResult.md)**
-
 ## Attributes
 
 
@@ -36,9 +32,3 @@ URI: [biolink:LaboratoryResult](https://w3id.org/biolink/vocab/LaboratoryResult)
     * range: [IriType](IriType.md)
     * inherited from: [NamedThing](NamedThing.md)
     * in subsets: (translator_minimal)
-
-### Domain for slot:
-
- * [lab has correlated lab](lab_has_correlated_lab.md)  <sub>0..*</sub>
-    * Description: A correlation between two lab tests
-    * range: [LaboratoryResult](LaboratoryResult.md)

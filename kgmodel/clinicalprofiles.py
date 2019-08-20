@@ -1,5 +1,5 @@
 # Auto generated from clinicalprofiles.yaml by pythongen.py version: 0.2.1
-# Generation date: 2019-08-14 13:35
+# Generation date: 2019-08-19 10:08
 # Schema: ClinicalProfile Biolink Model extensions
 #
 # id: http://clinicalprofiles.org/biolink/extension
@@ -13,8 +13,8 @@ from biolinkml.utils.yamlutils import YAMLRoot
 from biolinkml.utils.formatutils import camelcase, underscore, sfx
 from rdflib import Namespace, URIRef
 from biolink.model import Association, AssociationId, ChemicalSubstance, ChemicalSubstanceId, ClinicalIntervention, ClinicalInterventionId, DiseaseOrPhenotypicFeatureId, DrugId, GenomicEntityId, IdentifierType, IriType, LabelType, MolecularEntityId, NamedThingId, NarrativeText, OccurrentId, OntologyClassId, OrganismTaxonId, Phenomenon, PhenomenonId, PhenotypicFeatureId, Procedure, ProcedureId, ProviderId, PublicationId, TranscriptId
-from biolinkml.utils.metamodelcore import Bool, URI
-from includes.types import Boolean, Float, String, Uri
+from biolinkml.utils.metamodelcore import Bool, ElementIdentifier, URI, URIorCURIE
+from includes.types import Boolean, Float, String, Uri, Uriorcurie
 
 metamodel_version = "1.4.0"
 
@@ -106,7 +106,15 @@ class MedicineId(ChemicalSubstanceId):
     pass
 
 
-class LabToLabCorrelationId(AssociationId):
+class EntityToEntityCorrelationId(AssociationId):
+    pass
+
+
+class LabToLabCorrelationId(EntityToEntityCorrelationId):
+    pass
+
+
+class LabToMedicationCorrelationId(EntityToEntityCorrelationId):
     pass
 
 
@@ -115,14 +123,14 @@ class LaboratoryResult(Phenomenon):
     """
     The result of a clinical laboratory test performed on a patient
     """
-    _inherited_slots: ClassVar[List[str]] = ["correlation", "related_to", "interacts_with", "regulates_process_to_process", "has_participant", "has_input", "precedes", "lab_has_correlated_lab"]
+    _inherited_slots: ClassVar[List[str]] = ["correlation", "related_to", "interacts_with", "regulates_process_to_process", "has_participant", "has_input", "precedes"]
 
     class_class_uri: ClassVar[URIRef] = BIOLINK.LaboratoryResult
     class_class_curie: ClassVar[str] = "biolink:LaboratoryResult"
     class_name: ClassVar[str] = "laboratory result"
     class_model_uri: ClassVar[URIRef] = BIOLINK.LaboratoryResult
 
-    id: Union[str, LaboratoryResultId] = None
+    id: Union[ElementIdentifier, LaboratoryResultId] = None
     name: Union[str, LabelType] = None
     category: List[Union[str, IriType]] = empty_list()
 
@@ -144,7 +152,7 @@ class LaboratoryTest(Procedure):
     class_name: ClassVar[str] = "laboratory test"
     class_model_uri: ClassVar[URIRef] = BIOLINK.LaboratoryTest
 
-    id: Union[str, LaboratoryTestId] = None
+    id: Union[ElementIdentifier, LaboratoryTestId] = None
     name: Union[str, LabelType] = None
     category: List[Union[str, IriType]] = empty_list()
 
@@ -166,7 +174,7 @@ class Medication(ClinicalIntervention):
     class_name: ClassVar[str] = "medication"
     class_model_uri: ClassVar[URIRef] = BIOLINK.Medication
 
-    id: Union[str, MedicationId] = None
+    id: Union[ElementIdentifier, MedicationId] = None
     name: Union[str, LabelType] = None
     category: List[Union[str, IriType]] = empty_list()
 
@@ -188,10 +196,10 @@ class Medicine(ChemicalSubstance):
     class_name: ClassVar[str] = "medicine"
     class_model_uri: ClassVar[URIRef] = BIOLINK.Medicine
 
-    id: Union[str, MedicineId] = None
+    id: Union[ElementIdentifier, MedicineId] = None
     name: Union[str, LabelType] = None
     category: List[Union[str, IriType]] = empty_list()
-    has_active_ingredient: List[Union[str, DrugId]] = empty_list()
+    has_active_ingredient: List[Union[ElementIdentifier, DrugId]] = empty_list()
 
     def __post_init__(self):
         if self.id is not None and not isinstance(self.id, MedicineId):
@@ -214,7 +222,37 @@ class Diagnosis(YAMLRoot):
 
 
 @dataclass
-class LabToLabCorrelation(Association):
+class EntityToEntityCorrelation(Association):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BIOLINK.EntityToEntityCorrelation
+    class_class_curie: ClassVar[str] = "biolink:EntityToEntityCorrelation"
+    class_name: ClassVar[str] = "entity to entity correlation"
+    class_model_uri: ClassVar[URIRef] = BIOLINK.EntityToEntityCorrelation
+
+    subject: Union[ElementIdentifier, NamedThingId] = None
+    object: Union[ElementIdentifier, NamedThingId] = None
+    edge_label: Union[str, LabelType] = None
+    relation: Union[str, URIorCURIE] = NCIT.C48834
+    id: Union[ElementIdentifier, EntityToEntityCorrelationId] = bnode()
+    correlation_coefficient: Optional[float] = None
+    population: Optional[Union[str, URI]] = None
+    cohort: Optional[Union[str, URI]] = None
+
+    def __post_init__(self):
+        if self.id is not None and not isinstance(self.id, EntityToEntityCorrelationId):
+            self.id = EntityToEntityCorrelationId(self.id)
+        if self.relation is not None and not isinstance(self.relation, URIorCURIE):
+            self.relation = URIorCURIE(self.relation)
+        if self.population is not None and not isinstance(self.population, URI):
+            self.population = URI(self.population)
+        if self.cohort is not None and not isinstance(self.cohort, URI):
+            self.cohort = URI(self.cohort)
+        super().__post_init__()
+
+
+@dataclass
+class LabToLabCorrelation(EntityToEntityCorrelation):
     """
     A correlation between two laboratory tests in the context of a particular population and cohort
     """
@@ -225,27 +263,43 @@ class LabToLabCorrelation(Association):
     class_name: ClassVar[str] = "lab to lab correlation"
     class_model_uri: ClassVar[URIRef] = BIOLINK.LabToLabCorrelation
 
-    id: Union[str, LabToLabCorrelationId] = None
-    subject: Union[str, LaboratoryTestId] = None
-    relation: Union[str, IriType] = None
-    object: Union[str, LaboratoryTestId] = None
+    subject: Union[ElementIdentifier, LaboratoryTestId] = None
+    object: Union[ElementIdentifier, LaboratoryTestId] = None
     edge_label: Union[str, LabelType] = None
-    correlation_coefficient: Optional[float] = None
-    population: Optional[Union[str, URI]] = None
-    cohort: Optional[Union[str, URI]] = None
+    relation: Union[str, URIorCURIE] = NCIT.C48834
+    id: Union[ElementIdentifier, LabToLabCorrelationId] = bnode()
 
     def __post_init__(self):
         if self.id is not None and not isinstance(self.id, LabToLabCorrelationId):
             self.id = LabToLabCorrelationId(self.id)
         if self.subject is not None and not isinstance(self.subject, LaboratoryTestId):
             self.subject = LaboratoryTestId(self.subject)
-        if self.relation is not None and not isinstance(self.relation, IriType):
-            self.relation = IriType(self.relation)
         if self.object is not None and not isinstance(self.object, LaboratoryTestId):
             self.object = LaboratoryTestId(self.object)
-        if self.population is not None and not isinstance(self.population, URI):
-            self.population = URI(self.population)
-        if self.cohort is not None and not isinstance(self.cohort, URI):
-            self.cohort = URI(self.cohort)
+        super().__post_init__()
+
+
+@dataclass
+class LabToMedicationCorrelation(EntityToEntityCorrelation):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = BIOLINK.LabToMedicationCorrelation
+    class_class_curie: ClassVar[str] = "biolink:LabToMedicationCorrelation"
+    class_name: ClassVar[str] = "lab to medication correlation"
+    class_model_uri: ClassVar[URIRef] = BIOLINK.LabToMedicationCorrelation
+
+    subject: Union[ElementIdentifier, LaboratoryTestId] = None
+    object: Union[ElementIdentifier, DrugId] = None
+    edge_label: Union[str, LabelType] = None
+    relation: Union[str, URIorCURIE] = NCIT.C48834
+    id: Union[ElementIdentifier, LabToMedicationCorrelationId] = bnode()
+
+    def __post_init__(self):
+        if self.id is not None and not isinstance(self.id, LabToMedicationCorrelationId):
+            self.id = LabToMedicationCorrelationId(self.id)
+        if self.subject is not None and not isinstance(self.subject, LaboratoryTestId):
+            self.subject = LaboratoryTestId(self.subject)
+        if self.object is not None and not isinstance(self.object, DrugId):
+            self.object = DrugId(self.object)
         super().__post_init__()
 

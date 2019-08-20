@@ -107,3 +107,4 @@ venv.bak/
 env.lock
 *-PREV
 Clinical Profiles Examples
+.idea

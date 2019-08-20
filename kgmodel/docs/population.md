@@ -8,7 +8,7 @@ URI: [biolink:population](https://w3id.org/biolink/vocab/population)
 
 ## Domain and Range
 
-[LabToLabCorrelation](LabToLabCorrelation.md) ->  <sub>OPT</sub> [Uri](Uri.md)
+[EntityToEntityCorrelation](EntityToEntityCorrelation.md) ->  <sub>OPT</sub> [Uri](Uri.md)
 
 ## Parents
 
@@ -19,4 +19,6 @@ URI: [biolink:population](https://w3id.org/biolink/vocab/population)
 
 ## Used by
 
+ * [EntityToEntityCorrelation](EntityToEntityCorrelation.md)
  * [LabToLabCorrelation](LabToLabCorrelation.md)
+ * [LabToMedicationCorrelation](LabToMedicationCorrelation.md)

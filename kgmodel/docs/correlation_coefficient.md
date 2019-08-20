@@ -8,7 +8,7 @@ URI: [biolink:correlation_coefficient](https://w3id.org/biolink/vocab/correlatio
 
 ## Domain and Range
 
-[LabToLabCorrelation](LabToLabCorrelation.md) ->  <sub>OPT</sub> [Float](Float.md)
+[EntityToEntityCorrelation](EntityToEntityCorrelation.md) ->  <sub>OPT</sub> [Float](Float.md)
 
 ## Parents
 
@@ -19,4 +19,6 @@ URI: [biolink:correlation_coefficient](https://w3id.org/biolink/vocab/correlatio
 
 ## Used by
 
+ * [EntityToEntityCorrelation](EntityToEntityCorrelation.md)
  * [LabToLabCorrelation](LabToLabCorrelation.md)
+ * [LabToMedicationCorrelation](LabToMedicationCorrelation.md)
